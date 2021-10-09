@@ -9,6 +9,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import ContactsList from "./components/Contacts/ContactsList";
+import NewContact from "./components/Contacts/NewContact";
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -19,7 +20,9 @@ const App = () => {
       {user ? <ContactsList /> : <Login />}
       <Router>
         <Switch>
-          <Route path="/new" component={Login} />
+          <Route path="/" exact>
+            {user && <Redirect to="/contactsList" component={ContactsList} />}
+          </Route>
         </Switch>
       </Router>
     </>
