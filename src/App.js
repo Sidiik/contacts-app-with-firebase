@@ -2,14 +2,21 @@ import React, { useContext, useState } from "react";
 import Header from "./components/header/header";
 import Login from "./components/Login";
 import { AuthContext, AuthProvider } from "./contexts/AuthContext";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+import ContactsList from "./components/Contacts/ContactsList";
 
 const App = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+
   return (
     <>
-      <Header user={user} />
-      {!user ? <Login /> : <></>}
+      <Header />
+      {user ? <ContactsList /> : <Login />}
     </>
   );
 };
