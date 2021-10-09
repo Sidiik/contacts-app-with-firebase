@@ -17,6 +17,11 @@ const App = () => {
     <>
       <Header />
       {user ? <ContactsList /> : <Login />}
+      <Router>
+        <Switch>
+          <Route path="/new" component={Login} />
+        </Switch>
+      </Router>
     </>
   );
 };
